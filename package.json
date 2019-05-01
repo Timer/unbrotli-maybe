@@ -5,6 +5,7 @@
   "umd:main": "dist/unbrotli-maybe.umd.production.js",
   "module": "dist/unbrotli-maybe.es.production.js",
   "typings": "dist/index.d.ts",
+  "repository": "timer/unbrotli-maybe",
   "engines": {
     "node": ">=11.7.0"
   },
