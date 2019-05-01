@@ -1,6 +1,6 @@
 {
   "name": "unbrotli-maybe",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "main": "dist/index.js",
   "umd:main": "dist/unbrotli-maybe.umd.production.js",
   "module": "dist/unbrotli-maybe.es.production.js",
