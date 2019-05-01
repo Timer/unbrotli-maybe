@@ -15,8 +15,8 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
-    "release": "CI=true FORCE_COLOR=1 np",
+    "test": "tsdx test --coverage",
+    "release": "np",
     "prepack": "yarn build"
   },
   "husky": {
