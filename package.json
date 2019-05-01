@@ -16,7 +16,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "release": "np",
+    "release": "CI=true np",
     "prepack": "yarn build"
   },
   "husky": {
