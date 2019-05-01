@@ -16,17 +16,17 @@ function bufferToStream(buffer: Buffer) {
 
 const Data = Buffer.from('Hello world!');
 
+const getBuffer = function(parts: any) {
+  const buffers = parts.map((part: any) =>
+    util.isBuffer(part) ? part : Buffer.from(part)
+  );
+  return Buffer.concat(buffers);
+};
+
 describe('unbrotli', () => {
   it('does nothing', async () => {
     expect(
-      await toArray(bufferToStream(Data).pipe(unbrotli())).then(function(
-        parts: any
-      ) {
-        const buffers = parts.map((part: any) =>
-          util.isBuffer(part) ? part : Buffer.from(part)
-        );
-        return Buffer.concat(buffers);
-      })
+      await toArray(bufferToStream(Data).pipe(unbrotli())).then(getBuffer)
     ).toEqual(Data);
   });
   it('decompresses', async () => {
@@ -36,12 +36,7 @@ describe('unbrotli', () => {
           .pipe(zlib.createBrotliCompress())
           .pipe(wrap(Buffer.from([0xce, 0xb2, 0xcf, 0x81])))
           .pipe(unbrotli())
-      ).then(function(parts: any) {
-        const buffers = parts.map((part: any) =>
-          util.isBuffer(part) ? part : Buffer.from(part)
-        );
-        return Buffer.concat(buffers);
-      })
+      ).then(getBuffer)
     ).toEqual(Data);
   });
 });
